@@ -1,0 +1,92 @@
+.header {
+  margin-bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  &>div {
+    display: flex;
+    gap: 8px;
+  }
+
+  & img {
+    width: 16px;
+    aspect-ratio: 1/1;
+  }
+
+  &__banner {
+    width: 100%;
+    background-image: url('https://marketplace.canva.com/EAFCytpuJ08/1/0/1600w/canva-green-wateroclor-leaf-linktree-background-0Mp0WYk6_8E.jpg');
+    background-size: cover;
+    padding-block: 56px;
+    border-radius: 24px;
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 48px;
+  }
+}
+
+.budgetCard {
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  min-height: 160px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 24px;
+  padding: 16px 32px;
+  margin-block: 16px;
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    padding-block: 8px;
+  }
+
+  &__description {
+    font-size: 16px;
+    max-width: 28ch;
+    font-weight: 500;
+  }
+
+  &__price {
+    font-weight: 600;
+  }
+
+  &__price span {
+    font-size: 48px;
+    font-weight: 900;
+  }
+
+  &__checkboxContainer {
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+}
+
+
+.totalBudget {
+  margin: auto;
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 64px;
+  margin-block: 36px;
+  padding-block: 36px;
+  font-size: 24px;
+  font-weight: 700;
+
+
+  & span {
+    font-size: 36px;
+    font-weight: 900;
+  }
+}
