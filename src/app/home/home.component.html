@@ -1,0 +1,56 @@
+<header class="header">
+  <div>
+    <img
+      src="https://logomaker.designfreelogoonline.com/media/productdesigner/logo/resized/00456_Free_Logo_Maker_Lines_LogoTemplate2-02.png"
+      alt="Logo" />
+    <h3>Frontender.ItAcademy</h3>
+  </div>
+  <section class="header__banner">
+    <h1 class="header__title">Aconsegueix la millor qualitat</h1>
+  </section>
+</header>
+<main>
+  <form action="">
+    <article class="budgetCard">
+      <div class="budgetCard__infoContainer">
+        <h4 class="budgetCard__title">Seo</h4>
+        <p class="budgetCard__description">Programació d'una web responsive completa</p>
+      </div>
+      <p class="budgetCard__price"><span>300</span>€</p>
+      <div class="budgetCard__checkboxContainer">
+        <input type="checkbox" id="seoCheckbox" name="seoCheckbox" [formControl]="budget.controls.seoCheckbox"
+          (click)="updateCheckbox('seoCheckbox')" />
+        <label for="seoCheckbox">Afegir</label>
+      </div>
+    </article>
+    <article class="budgetCard">
+      <div class="budgetCard__infoContainer">
+        <h4 class="budgetCard__title">Ads</h4>
+        <p class="budgetCard__description">Programació d'una web responsive completa</p>
+      </div>
+      <p class="budgetCard__price"><span>400</span>€</p>
+      <div class="budgetCard__checkboxContainer">
+        <input type="checkbox" id="adsCheckbox" name="adsCheckbox" [formControl]="budget.controls.adsCheckbox"
+          (click)="updateCheckbox('adsCheckbox')" />
+        <label for="adsCheckbox">Afegir</label>
+      </div>
+    </article>
+    <article class="budgetCard">
+      <div class="budgetCard__infoContainer">
+        <h4 class="budgetCard__title">Web</h4>
+        <p class="budgetCard__description">Programació d'una web responsive completa</p>
+      </div>
+      <p class="budgetCard__price"><span>500</span>€</p>
+      <div class="budgetCard__checkboxContainer">
+        <input type="checkbox" id="webCheckbox" name="webCheckbox" [formControl]="budget.controls.webCheckbox"
+          (click)="updateCheckbox('webCheckbox')" />
+        <label for="webCheckbox">Afegir</label>
+      </div>
+    </article>
+  </form>
+  <article class="totalBudget">
+    <p class="totalBudget__text">Preu pressupostat:</p>
+    <p class="totalBudget__total"><span>{{totalBudget()}}</span>€</p>
+  </article>
+
+</main>
