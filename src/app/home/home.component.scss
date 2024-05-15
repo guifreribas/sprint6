@@ -31,8 +31,7 @@
 .budgetCard {
   margin: auto;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   width: 100%;
   max-width: 800px;
   min-height: 160px;
@@ -40,6 +39,12 @@
   border-radius: 24px;
   padding: 16px 32px;
   margin-block: 16px;
+
+  &__budgetContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   &__title {
     font-size: 32px;
