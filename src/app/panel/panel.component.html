@@ -1,1 +1,17 @@
-<p>panel works!</p>
+<section class="budgetOption" [formGroup]="budget">
+  <div class="budgetOption__option">
+    <p>Nombre de pàgines</p>
+    <mat-icon class="budgetOption__remove" (click)="removePage()"> do_not_disturb_on </mat-icon>
+    <input type="text" class="budgetOption__quantity"
+      [ngClass]="{'budgetOption__quantity--invalid': budget.get('pagesFrm')?.errors}" formControlName="pagesFrm">
+    <mat-icon class="budgetOption__add" (click)="addPage()"> add_circle </mat-icon>
+  </div>
+  <div class="budgetOption__option">
+    <p>Nombre de llenguatges</p>
+    <mat-icon class="budgetOption__remove" (click)="removeLanguage()"> do_not_disturb_on </mat-icon>
+    <input type="text" class="budgetOption__quantity"
+      [ngClass]="{'budgetOption__quantity--invalid': budget.get('languagesFrm')?.errors}"
+      formControlName="languagesFrm">
+    <mat-icon class="budgetOption__add" (click)="addLanguage()"> add_circle </mat-icon>
+  </div>
+</section>
