@@ -1,13 +1,15 @@
 <section class="budgetOption" [formGroup]="budget">
   <div class="budgetOption__option">
-    <p>Nombre de pàgines</p>
+    <mat-icon class="budgetOption__add" data-bs-toggle="modal" data-bs-target="#pagesModal"> info </mat-icon>
+    <p class="budgetOption__title">Nombre de pàgines</p>
     <mat-icon class="budgetOption__remove" (click)="removePage()"> do_not_disturb_on </mat-icon>
     <input type="text" class="budgetOption__quantity"
       [ngClass]="{'budgetOption__quantity--invalid': budget.get('pagesFrm')?.errors}" formControlName="pagesFrm">
     <mat-icon class="budgetOption__add" (click)="addPage()"> add_circle </mat-icon>
   </div>
   <div class="budgetOption__option">
-    <p>Nombre de llenguatges</p>
+    <mat-icon class="budgetOption__add" data-bs-toggle="modal" data-bs-target="#languagesModal"> info </mat-icon>
+    <p class="budgetOption__title">Nombre de llenguatges</p>
     <mat-icon class="budgetOption__remove" (click)="removeLanguage()"> do_not_disturb_on </mat-icon>
     <input type="text" class="budgetOption__quantity"
       [ngClass]="{'budgetOption__quantity--invalid': budget.get('languagesFrm')?.errors}"
@@ -15,3 +17,34 @@
     <mat-icon class="budgetOption__add" (click)="addLanguage()"> add_circle </mat-icon>
   </div>
 </section>
+
+
+<!-- Pages Modal -->
+<div class="modal fade" id="pagesModal" tabindex="-1" aria-labelledby="pagesModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title " id="pagesModalLabel">Número de pàgines</h5>
+        <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body m-auto p-5">
+        Afegeix el número de pàgines que necessita la teva web. El preu de cada pàgina és de 30€.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Languages Modal -->
+<div class="modal fade" id="languagesModal" tabindex="-1" aria-labelledby="languagesModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title " id="pagesModalLabel">Número de llenguatges</h5>
+        <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body m-auto p-5">
+        Afegeix el número de llenguatges que necessita la teva web. El preu de cada llenguatge és de 30€.
+      </div>
+    </div>
+  </div>
+</div>
