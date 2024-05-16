@@ -15,10 +15,23 @@ export interface TotalBudgetParams {
   languages: WritableSignal<number>;
 }
 
-interface MyForm {
-  seoCheckbox: FormControl<boolean | null>;
-  adsCheckbox: FormControl<boolean | null>;
-  webCheckbox: FormControl<boolean | null>;
-  languages: FormControl<number>;
-  pages: FormControl<number>;
+// interface MyForm {
+//   seoCheckbox: FormControl<boolean | null>;
+//   adsCheckbox: FormControl<boolean | null>;
+//   webCheckbox: FormControl<boolean | null>;
+//   languages: FormControl<number>;
+//   pages: FormControl<number>;
+// }
+
+export interface Budget {
+  seoCheckbox: boolean;
+  adsCheckbox: boolean;
+  webCheckbox: boolean;
+  languagesFrm: number;
+  pagesFrm: number;
+  name: string;
+  email: string;
+  phone: string;
+  createdAt: Date;
+  total: number;
 }
