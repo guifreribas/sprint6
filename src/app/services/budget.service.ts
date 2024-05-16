@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Budget } from '../models/budget';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BudgetService {
+  public budgets = signal<Budget[]>([]);
   constructor() {}
 
   //Nombre de pàgines * el nombre d'idiomes * 30)€.
@@ -36,5 +38,12 @@ export class BudgetService {
       total += this.getTotalWeb(pages, languages);
     }
     return total;
+  }
+
+  addBudget(budget: Budget) {
+    this.budgets.update((prev) => [
+      { ...budget, createdAt: new Date() },
+      ...prev,
+    ]);
   }
 }

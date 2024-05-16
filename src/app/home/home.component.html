@@ -10,7 +10,7 @@
   </section>
 </header>
 <article>
-  <form action="" [formGroup]="budget">
+  <form action="" [formGroup]="budget" (submit)="onSubmit()">
     <article class="budgetCard">
       <section class="budgetCard__budgetContainer">
         <div class="budgetCard__infoContainer">
@@ -56,10 +56,22 @@
       <app-panel [budget]="budget" [onChangeInputs]="theBoundOnChange"></app-panel>
       }
     </article>
+
+    <article class="totalBudget">
+      <p class="totalBudget__text">Preu pressupostat:</p>
+      <p class="totalBudget__total"><span>{{totalBudget() || 0}}</span>€</p>
+    </article>
+    <article class="budgetForm">
+      <input type="text" formControlName="name" placeholder="Nom">
+      <input type="text" formControlName="phone" placeholder="Telèfon" pattern="^\d+$">
+      <input type="text" formControlName="email" placeholder="Email"
+        pattern="[a-z0-9]+[_a-z0-9\.-]*[a-z0-9]+@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})">
+      <button type="submit"
+        [disabled]="this.budget.get('name')?.errors?.['required'] || this.budget.get('phone')?.errors || this.budget.get('email')?.errors">Sol.licitar
+        pressupost</button>
+    </article>
   </form>
-  <article class="totalBudget">
-    <p class="totalBudget__text">Preu pressupostat:</p>
-    <p class="totalBudget__total"><span>{{totalBudget() || 0}}</span>€</p>
-  </article>
+
+  <app-budgets-list></app-budgets-list>
 
 </article>
