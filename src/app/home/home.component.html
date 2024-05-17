@@ -65,8 +65,7 @@
       <article class="budgetForm">
         <input type="text" formControlName="name" placeholder="Nom">
         <input type="text" formControlName="phone" placeholder="Telèfon" pattern="^\d+$">
-        <input type="text" formControlName="email" placeholder="Email"
-          pattern="[a-z0-9]+[_a-z0-9\.-]*[a-z0-9]+@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})">
+        <input type="text" formControlName="email" placeholder="Email">
         <button type="submit"
           [disabled]="this.budget.get('name')?.errors?.['required'] || this.budget.get('phone')?.errors || this.budget.get('email')?.errors">Sol.licitar
           pressupost</button>

@@ -32,13 +32,10 @@
   }
 
   &__icon {
-    color: rgba(0, 0, 0, 0.7);
+    color: rgba(0, 0, 0, 0.4);
     transition: color 0.1s;
-
-    &:hover {
-      color: rgba(0, 0, 0, 0.4);
-      cursor: pointer;
-    }
+    position: absolute;
+    right: 8px;
   }
 
   &__orderFieldContainer {
