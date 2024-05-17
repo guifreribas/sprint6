@@ -8,6 +8,7 @@ import {
 import { PanelComponent } from '../panel/panel.component';
 import { BudgetService } from '../services/budget.service';
 import { BudgetsListComponent } from '../budgets-list/budgets-list.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,6 @@ import { BudgetsListComponent } from '../budgets-list/budgets-list.component';
 })
 export class HomeComponent {
   public totalBudget = signal<number>(0);
-  // public budgetItems = signal<Record<string, number>[]>([]);
   public isWebChecked = signal<boolean>(false);
 
   public theBoundOnChange = () => {};
@@ -34,7 +34,46 @@ export class HomeComponent {
     phone: new FormControl('', Validators.required),
   });
 
-  constructor(private budgetService: BudgetService) {}
+  constructor(
+    private budgetService: BudgetService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.route.queryParams.subscribe((params) => {
+      this.budget.controls['seoCheckbox'].setValue(params['seo'] === 'true');
+      this.budget.controls['adsCheckbox'].setValue(params['ads'] === 'true');
+      this.budget.controls['webCheckbox'].setValue(params['web'] === 'true');
+      this.budget.controls['languagesFrm'].setValue(
+        Number(params['languages'] || 0)
+      );
+      this.budget.controls['pagesFrm'].setValue(Number(params['pages'] || 0));
+      this.isWebChecked.set(params['web'] === 'true');
+    });
+  }
+
+  updateUrl() {
+    const params: any = {};
+    if (this.budget.controls['seoCheckbox'].value) {
+      params['seo'] = 'true';
+    }
+    if (this.budget.controls['adsCheckbox'].value) {
+      params['ads'] = 'true';
+    }
+    if (this.budget.controls['webCheckbox'].value) {
+      params['web'] = 'true';
+    }
+    if (this.budget.controls['languagesFrm'].value) {
+      params['languages'] = Number(this.budget.controls['languagesFrm'].value);
+    }
+    if (this.budget.controls['pagesFrm'].value) {
+      params['pages'] = Number(this.budget.controls['pagesFrm'].value);
+    }
+    this.router.navigate([], {
+      queryParams: params,
+      relativeTo: this.route,
+      queryParamsHandling: 'merge',
+    });
+  }
 
   addWebItem() {
     this.isWebChecked.update((prev) => !prev);
@@ -51,6 +90,7 @@ export class HomeComponent {
       languages: this.budget.controls['languagesFrm'].value,
     });
     this.totalBudget.set(result);
+    this.updateUrl();
   }
 
   onSubmit() {
