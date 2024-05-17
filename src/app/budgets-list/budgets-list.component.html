@@ -1,19 +1,38 @@
 <div class="dashed-line"></div>
 
-
 <article class="budgets-list">
 
   <header class="header">
     <h1 class="header__title">Pressupostos en curs:</h1>
     <section class="header__navContainer">
       <mat-icon class="header__icon">search</mat-icon>
-      <p>Data</p>
-      <p>Import</p>
-      <p>Nom</p>
+      <div class="header__orderFieldContainer"
+        [ngClass]="{'header__orderFieldContainer--active': sortAction().action === 'DATE'}" (click)="sortByDate()">
+        <p class="header__orderField" [ngClass]="{'header__orderField--active': sortAction().action === 'DATE'}">Data
+        </p>
+        @if(sortAction().action === 'DATE'){
+        @if(sortAction().type === 'ASC'){ <mat-icon class="header__arrowIcon">arrow_drop_up</mat-icon>}
+        @else {<mat-icon class="header__arrowIcon">arrow_drop_down</mat-icon>}
+        }
+      </div>
+      <div class="header__orderFieldContainer" (click)="sortByImport()">
+        <p class="header__orderField" [ngClass]="{'header__orderField--active': sortAction().action === 'IMPORT'}">
+          Import</p>
+        @if(sortAction().action === 'IMPORT'){
+        @if(sortAction().type === 'ASC'){ <mat-icon class="header__arrowIcon">arrow_drop_up</mat-icon>}
+        @else {<mat-icon class="header__arrowIcon">arrow_drop_down</mat-icon>}
+        }
+      </div>
+      <div class="header__orderFieldContainer" (click)="sortByName()">
+        <p class="header__orderField" [ngClass]="{'header__orderField--active': sortAction().action === 'NAME'}">Nom</p>
+        @if(sortAction().action === 'NAME'){
+        @if(sortAction().type === 'ASC'){ <mat-icon class="header__arrowIcon">arrow_drop_up</mat-icon>}
+        @else {<mat-icon class="header__arrowIcon">arrow_drop_down</mat-icon>}
+        }
+      </div>
     </section>
   </header>
 
-  <!-- <div *ngFor="let budget of budgets()"></div> -->
 
   @for(budget of budgetService.budgets(); track budget.createdAt){
   <article class="card">
@@ -42,26 +61,5 @@
     </section>
   </article>
   }
-
-
-  <!-- <article class="card">
-    <section class="card__userInfoContainer">
-      <h3 class="card__username">Ona Costa</h3>
-      <p class="card__userInfo">{{'ona_costa@email.com'}}</p>
-      <p class="card__userInfo">4576342985</p>
-    </section>
-    <section class="card__items">
-      <h4 class="card__itemsTitle">Serveis contractats:</h4>
-      <ul>
-        <li>Seo</li>
-        <li>Ads</li>
-        <li>Web (4 pàgines, 2 llenguatges)</li>
-      </ul>
-    </section>
-    <section class="card__totalSection">
-      <p class="card__totalTitle">Total:</p>
-      <h2 class="card__total">400 <span>€</span></h2>
-    </section>
-  </article> -->
 
 </article>

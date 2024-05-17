@@ -27,7 +27,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 16px;
+    gap: 24px;
     padding-inline: 24px;
   }
 
@@ -41,19 +41,49 @@
     }
   }
 
-  & p {
-    font-size: 14px;
-    font-weight: 400;
-    text-align: center;
-    margin-bottom: 0;
-    transition: color 0.1s;
+  &__orderFieldContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+
+    &--active {
+      color: #000;
+      font-weight: bold;
+    }
 
     &:hover {
-      color: rgba(0, 0, 0, 0.4);
+      // color: rgba(0, 0, 0, 0.4);
+      opacity: 0.6;
       cursor: pointer;
     }
 
+    & p {
+      font-size: 14px;
+      font-weight: 400;
+      text-align: center;
+      margin-bottom: 0;
+      transition: color 0.1s;
+
+    }
   }
+
+  &__orderField {
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.6);
+
+    &--active {
+      color: #000;
+      font-weight: bold;
+    }
+  }
+
+  &__arrowIcon {
+    position: absolute;
+    right: -20px;
+  }
+
+
 }
 
 
@@ -64,7 +94,6 @@
   align-items: stretch;
   width: 100%;
   max-width: 800px;
-  // min-height: 160px;
   height: fit-content;
   margin: auto;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
@@ -72,6 +101,7 @@
   padding: 32px;
   margin-block: 16px;
   background-color: transparent;
+  border: none;
 
   &__userInfoContainer {
     display: flex;
