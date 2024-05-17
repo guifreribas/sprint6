@@ -5,7 +5,11 @@
   <header class="header">
     <h1 class="header__title">Pressupostos en curs:</h1>
     <section class="header__navContainer">
-      <mat-icon class="header__icon">search</mat-icon>
+      <div class="header__orderFieldContainer">
+        <input type="text" #searchFilter placeholder="Cerca" [ngModel]="inputValue"
+          (ngModelChange)="filterBudgetsByName($event)">
+        <mat-icon class="header__icon">search</mat-icon>
+      </div>
       <div class="header__orderFieldContainer"
         [ngClass]="{'header__orderFieldContainer--active': sortAction().action === 'DATE'}" (click)="sortByDate()">
         <p class="header__orderField" [ngClass]="{'header__orderField--active': sortAction().action === 'DATE'}">Data
@@ -33,8 +37,8 @@
     </section>
   </header>
 
-
-  @for(budget of budgetService.budgets(); track budget.createdAt){
+  @if(filteredBudgets().length === 0){
+  @for(budget of this.budgetService.budgets(); track budget.createdAt){
   <article class="card">
     <section class="card__userInfoContainer">
       <h3 class="card__username">{{budget.name}}</h3>
@@ -44,12 +48,33 @@
     <section class="card__items">
       <h4 class="card__itemsTitle">Serveis contractats:</h4>
       <ul>
-        @if(budget.seoCheckbox){
-        <li>Seo</li>
+        @if(budget.seoCheckbox){<li>Seo</li>}
+        @if(budget.adsCheckbox){<li>Ads</li>}
+        @if(budget.webCheckbox){
+        <li>Web ({{budget.pagesFrm || 0}} pàgines, {{budget.languagesFrm || 0}} llenguatges)</li>
         }
-        @if(budget.adsCheckbox){
-        <li>Ads</li>
-        }
+      </ul>
+    </section>
+    <section class="card__totalSection">
+      <p class="card__totalTitle">Total:</p>
+      <h2 class="card__total">{{budget.total}} <span>€</span></h2>
+    </section>
+  </article>
+  }
+  }
+  @else{
+  @for(budget of filteredBudgets(); track budget.createdAt){
+  <article class="card">
+    <section class="card__userInfoContainer">
+      <h3 class="card__username">{{budget.name}}</h3>
+      <p class="card__userInfo">{{budget.email}}</p>
+      <p class="card__userInfo">{{budget.phone}}</p>
+    </section>
+    <section class="card__items">
+      <h4 class="card__itemsTitle">Serveis contractats:</h4>
+      <ul>
+        @if(budget.seoCheckbox){<li>Seo</li>}
+        @if(budget.adsCheckbox){<li>Ads</li>}
         @if(budget.webCheckbox){
         <li>Web ({{budget.pagesFrm || 0}} pàgines, {{budget.languagesFrm || 0}} llenguatges)</li>
         }
@@ -60,6 +85,7 @@
       <h2 class="card__total">{{budget.total}} <span>€</span></h2>
     </section>
   </article>
+  }
   }
 
 </article>

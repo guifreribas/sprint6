@@ -50,6 +50,24 @@
     align-items: center;
   }
 
+  &__checkboxContainer {
+    border-radius: 8px;
+    height: fit-content;
+    padding: 0;
+    margin: 0;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+
+    & label {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
   &__title {
     font-size: 32px;
     font-weight: 700;
@@ -115,13 +133,13 @@
   margin-block: 16px;
   gap: 8px;
 
-  &>input {
-    width: 100%;
-    padding: 8px;
-    border-radius: 8px;
-    border: 2px solid rgba(0, 0, 0, 0.1);
-    background-color: transparent;
-  }
+  // &>input {
+  //   width: 100%;
+  //   padding: 8px;
+  //   border-radius: 8px;
+  //   border: 2px solid rgba(0, 0, 0, 0.1);
+  //   background-color: transparent;
+  // }
 
   &>button {
     width: 100%;
