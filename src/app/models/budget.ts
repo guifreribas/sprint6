@@ -35,3 +35,8 @@ export interface Budget {
   createdAt: Date;
   total: number;
 }
+
+export type SortedAction = {
+  action: 'INIT' | 'DATE' | 'IMPORT' | 'NAME';
+  type: 'ASC' | 'DESC';
+};
