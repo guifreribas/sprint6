@@ -9,7 +9,6 @@ export class BudgetService {
   public budgets = signal<Budget[]>([]);
   constructor() {}
 
-  //Nombre de pàgines * el nombre d'idiomes * 30)€.
   getTotalWeb(pages: number, languages: number): number {
     if (pages < 0 || languages < 0) return 500;
     return pages * languages * 30 + 500;
