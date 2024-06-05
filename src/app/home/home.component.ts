@@ -55,18 +55,28 @@ export class HomeComponent {
     const params: any = {};
     if (this.budget.controls['seoCheckbox'].value) {
       params['seo'] = 'true';
+    } else {
+      params['seo'] = null;
     }
     if (this.budget.controls['adsCheckbox'].value) {
       params['ads'] = 'true';
+    } else {
+      params['ads'] = null;
     }
     if (this.budget.controls['webCheckbox'].value) {
       params['web'] = 'true';
-    }
-    if (this.budget.controls['languagesFrm'].value) {
-      params['languages'] = Number(this.budget.controls['languagesFrm'].value);
-    }
-    if (this.budget.controls['pagesFrm'].value) {
-      params['pages'] = Number(this.budget.controls['pagesFrm'].value);
+      if (this.budget.controls['languagesFrm'].value) {
+        params['languages'] = Number(
+          this.budget.controls['languagesFrm'].value
+        );
+      }
+      if (this.budget.controls['pagesFrm'].value) {
+        params['pages'] = Number(this.budget.controls['pagesFrm'].value);
+      }
+    } else {
+      params['web'] = null;
+      params['languages'] = null;
+      params['pages'] = null;
     }
     this.router.navigate([], {
       queryParams: params,
